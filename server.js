@@ -1,3 +1,6 @@
+// Load environment variables from .env file (only used locally)
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');

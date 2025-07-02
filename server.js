@@ -6,16 +6,17 @@ require('dotenv').config();
 const todoRoutes = require('./routes/todoRoutes');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use('/api/todos', todoRoutes);
 
-// Use environment variable
-const PORT = process.env.PORT || 3000;
-const MONGODB_URI = process.env.MONGODB_URI;
-
+// MongoDB Connection
 mongoose.connect(MONGODB_URI)
     .then(() => {
         console.log("✅ Connected to MongoDB Atlas");
